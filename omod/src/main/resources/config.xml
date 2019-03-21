@@ -7,7 +7,7 @@
 	<name>${project.parent.name}</name>
 	<version>${project.parent.version}</version>
 	<package>org.openmrs.module.kijabeextension</package>
-	<author>Mupagasi</author>
+	<author>Cure International</author>
 	<description>
 			${project.parent.description}
 	</description>
