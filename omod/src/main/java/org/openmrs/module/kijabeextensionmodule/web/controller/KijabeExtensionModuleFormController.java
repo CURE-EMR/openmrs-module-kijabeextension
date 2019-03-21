@@ -11,10 +11,9 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.basicmodule.web.controller;
+package org.openmrs.module.kijabeextensionmodule.web.controller;
 
 import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -30,17 +29,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * This class configured as controller using annotation and mapped with the URL of
- * 'module/basicmodule/basicmoduleLink.form'.
+ * 'module/kijabeextension/link.form'.
  */
 @Controller
-@RequestMapping(value = "module/basicmodule/basicmoduleLink.form")
-public class BasicModuleFormController {
+@RequestMapping(value = "module/kijabeextension/link.form")
+public class KijabeExtensionModuleFormController {
 	
 	/** Logger for this class and subclasses */
 	protected final Log log = LogFactory.getLog(getClass());
 	
 	/** Success form view name */
-	private final String SUCCESS_FORM_VIEW = "/module/basicmodule/basicmoduleForm";
+	private final String SUCCESS_FORM_VIEW = "/module/kijabeextension/kijabeextensionmoduleForm";
 	
 	/**
 	 * Initially called after the formBackingObject method to get the landing form name
@@ -81,7 +80,7 @@ public class BasicModuleFormController {
 		// get all patients that have an identifier "101" (from the demo sample data)
 		// see http://resources.openmrs.org/doc/index.html?org/openmrs/api/PatientService.html for
 		// a list of all PatientService methods
-		Collection<Patient> patients = Context.getPatientService().findPatients("101", false);
+		Collection<Patient> patients = Context.getPatientService().getPatients("101");
 		
 		// this object will be made available to the jsp page under the variable name
 		// that is defined in the @ModuleAttribute tag
