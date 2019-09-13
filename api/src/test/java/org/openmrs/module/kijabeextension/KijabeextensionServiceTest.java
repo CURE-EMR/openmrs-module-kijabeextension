@@ -10,9 +10,7 @@
 package org.openmrs.module.kijabeextension;
 
 /**
- * This is a unit test, which verifies logic in KijabeextensionService. It
- * doesn't extend BaseModuleContextSensitiveTest, thus it is run without the
- * in-memory DB and Spring context.
+ * This is a unit test, which verifies logic in KijabeextensionService. It doesn't extend
+ * BaseModuleContextSensitiveTest, thus it is run without the in-memory DB and Spring context.
  */
-public class KijabeextensionServiceTest {
-}
+public class KijabeextensionServiceTest {}
