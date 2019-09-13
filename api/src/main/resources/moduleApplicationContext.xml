@@ -25,34 +25,4 @@
 
     <context:component-scan base-package="org.openmrs.module.kijabeextension" />
 
-    <!-- Wraps KijabeextensionService methods in DB transactions and OpenMRS interceptors,
-    which set audit info like dateCreated, changedBy, etc.-->
-    <bean id="kijabeextension.KijabeextensionService"
-            class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionManager">
-            <ref bean="transactionManager" />
-        </property>
-        <property name="target">
-            <bean class="org.openmrs.module.kijabeextension.api.impl.KijabeextensionServiceImpl">
-                <property name="dao" ref="kijabeextension.KijabeextensionDao" />
-            </bean>
-        </property>
-        <property name="preInterceptors">
-            <ref bean="serviceInterceptors" />
-        </property>
-        <property name="transactionAttributeSource">
-            <ref bean="transactionAttributeSource" />
-        </property>
-    </bean>
-
-    <!-- Adds KijabeextensionService to OpenMRS context so it can be accessed
-    calling Context.getService(KijabeextensionService.class) -->
-    <bean parent="serviceContext">
-        <property name="moduleService">
-            <list>
-                <value>org.openmrs.module.kijabeextension.api.KijabeextensionService</value>
-                <ref bean="kijabeextension.KijabeextensionService" />
-            </list>
-        </property>
-    </bean>
 </beans>

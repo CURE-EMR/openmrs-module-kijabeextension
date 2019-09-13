@@ -16,6 +16,6 @@ import org.springframework.stereotype.Component;
  */
 @Component("kijabeextension.KijabeextensionConfig")
 public class KijabeextensionConfig {
-	
+
 	public final static String MODULE_PRIVILEGE = "Kijabeextension Privilege";
 }

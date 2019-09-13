@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AdditionalDetails implements AppointmentResponseExtension {
-	
+
 	@Override
 	public Map<String, String> run(Appointment appointment) {
 		Map<String, String> additionalInfo = new HashMap<String, String>();
@@ -24,16 +24,17 @@ public class AdditionalDetails implements AppointmentResponseExtension {
 		additionalInfo.put("Second Next Of Kin Phone", getPersonAttributeValue("secondNextOfKinPhone", patient));
 		return additionalInfo;
 	}
-	
+
 	public String getPersonAttributeValue(String personAttributeName, Patient patient) {
-		PersonAttributeType personAttributeType = Context.getPersonService().getPersonAttributeTypeByName(personAttributeName);
+		PersonAttributeType personAttributeType = Context.getPersonService()
+				.getPersonAttributeTypeByName(personAttributeName);
 		PersonAttribute personAttribute = patient.getAttribute(personAttributeType);
 		if (personAttribute != null) {
 			return patient.getAttribute(personAttributeType).getValue();
 		}
 		return "";
 	}
-	
+
 	public String getVillage(Patient patient) {
 		String villageName = "";
 		if (patient.getPersonAddress() != null) {
