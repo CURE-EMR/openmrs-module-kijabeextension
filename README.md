@@ -1,11 +1,9 @@
-openmrs-module-kijabeextensionmodule
+${moduleName}
 ==========================
-
-A demonstration module for new OpenMRS module developers
 
 Description
 -----------
-This module allow to display additional patient attributes to the additional info of appointment list view in appointment module
+This is a very basic module which can be used as a starting point in creating a new module.
 
 Building from Source
 --------------------

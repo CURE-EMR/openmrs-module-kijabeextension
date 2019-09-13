@@ -1,156 +1,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <!--
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.openmrs.maven.parents</groupId>
         <artifactId>maven-parent-openmrs-module</artifactId>
         <version>1.1.1</version>
-    </parent>-->
+    </parent>
 
-    <groupId>org.openmrs.module</groupId>
-    <artifactId>kijabeextension</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>Kijabe Extension Module</name>
-    <description>This module allow to display additional patient attributes to the additional info of appointment list view in appointment module.</description>
+	<groupId>org.openmrs.module</groupId>
+	<artifactId>kijabeextension</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Kijabeextension</name>
+	<description>Displays additional information per appointment from other modules or OpenMRS API in Bahmni.</description>
 
-    <scm>
-        <connection>scm:git:git@github.com:jeanpaul-mupagasi/openmrs-module-kijabeextension.git</connection>
-        <developerConnection>scm:git:git@github.com:jeanpaul-mupagasi/openmrs-module-kijabeextension.git</developerConnection>
-        <url>https://github.com/jeanpaul-mupagasi/openmrs-module-kijabeextension</url>
-    </scm>
+	<url>https://wiki.openmrs.org/x/FQ4z</url>
 
-    <modules>
-        <module>api</module>
-        <module>omod</module>
-    </modules>
+	<scm>
+		<connection>scm:git:git@github.com:openmrs/openmrs-module-kijabeextension.git</connection>
+		<developerConnection>scm:git:git@github.com:openmrs/openmrs-module-kijabeextension.git</developerConnection>
+		<url>https://github.com/openmrs/openmrs-module-kijabeextension/</url>
+	</scm>
 
-    <!--    <properties>
-        <openmrs.platform.version>1.11.2</openmrs.platform.version>
-    </properties>-->
-    
+	<modules>
+		<module>api</module>
+		<module>omod</module>
+	</modules>
+
+	<repositories>
+		<repository>
+			<id>openmrs-repo</id>
+			<name>OpenMRS Nexus Repository</name>
+			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+		</repository>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>openmrs-repo</id>
+			<name>OpenMRS Nexus Repository</name>
+			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
     <properties>
-        <openmrs.platform.version>2.1.1</openmrs.platform.version>
-        <openmrs.webservices.version>2.20.0</openmrs.webservices.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <appointmentschedulingVersion>1.7.0</appointmentschedulingVersion>
+        <openmrsPlatformVersion>1.11.6</openmrsPlatformVersion>
     </properties>
-    
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.openmrs.api</groupId>
-                <artifactId>openmrs-api</artifactId>
-                <version>${openmrs.platform.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.openmrs.web</groupId>
-                <artifactId>openmrs-web</artifactId>
-                <version>${openmrs.platform.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.openmrs.module</groupId>
-                <artifactId>webservices.rest-omod</artifactId>
-                <version>${openmrs.webservices.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.openmrs.module</groupId>
-                <artifactId>webservices.rest-omod-common</artifactId>
-                <version>2.20.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.openmrs.module</groupId>
-                <artifactId>appointmentscheduling-api</artifactId>
-                <version>${appointmentschedulingVersion}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.openmrs.module</groupId>
-                <artifactId>appointments-omod</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <target>1.8</target>
-                        <source>1.8</source>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.openmrs.maven.plugins</groupId>
-                    <artifactId>maven-openmrs-plugin</artifactId>
-                    <version>1.0.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.4</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>test-jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.10</version>
-                    <configuration>
-                        <includes>
-                            <include>**/*Test.java</include>
-                        </includes>
-                        <excludes>
-                            <exclude>**/BaseIntegrationTest.java</exclude>
-                        </excludes>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.kuali.maven.wagons</groupId>
-                <artifactId>maven-s3-wagon</artifactId>
-                <version>1.2.1</version>
-            </extension>
-        </extensions>
-    </build>
 </project>
