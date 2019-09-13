@@ -31,7 +31,7 @@ public class AdditionalDetails implements AppointmentResponseExtension {
 		PersonAttribute attribute = patient.getAttribute(personAttributeType);
 		if (attribute != null) {
 			attributeValue = attribute.getAttributeType().getFormat().equalsIgnoreCase("org.openmrs.Concept") ? Context.getConceptService().getConcept(attribute.getValue()).getName().getName() : attribute.getValue();
-			return patient.getAttribute(personAttributeType).getValue();
+			return attributeValue;
 		}
 		return attributeValue;
 	}
