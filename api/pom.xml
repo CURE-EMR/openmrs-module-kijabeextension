@@ -11,4 +11,12 @@
 	<packaging>jar</packaging>
 	<name>Kijabeextension API</name>
 	<description>API project for Kijabeextension</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>appointments-omod</artifactId>
+			<version>1.2-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
