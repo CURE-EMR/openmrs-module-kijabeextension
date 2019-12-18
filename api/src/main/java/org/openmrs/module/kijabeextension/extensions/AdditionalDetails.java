@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openmrs.Patient;
+import org.openmrs.PatientIdentifier;
+import org.openmrs.PatientIdentifierType;
 import org.openmrs.PersonAttribute;
 import org.openmrs.PersonAttributeType;
 import org.openmrs.api.context.Context;
@@ -19,6 +21,7 @@ public class AdditionalDetails implements AppointmentResponseExtension {
 		Map<String, String> additionalInfo = new HashMap<String, String>();
 		Patient patient = appointment.getPatient();
 		additionalInfo.put("Patient Type", getPersonAttributeValue("patientType", patient));
+		additionalInfo.put("Patient ID Card No", getPatientIdentifierValue("Patient ID Card No", patient));
 		additionalInfo.put("Clinic Location", getPersonAttributeValue("clinicLocation", patient));
 		additionalInfo.put("First Next Of Kin Phone", getPersonAttributeValue("firstNextOfKinPhone", patient));
 		additionalInfo.put("Second Next Of Kin Phone", getPersonAttributeValue("secondNextOfKinPhone", patient));
@@ -34,6 +37,18 @@ public class AdditionalDetails implements AppointmentResponseExtension {
 			return attributeValue;
 		}
 		return attributeValue;
+	}
+	
+	public String getPatientIdentifierValue(String identifierType, Patient patient) {
+		String identifierValue = "";
+		
+		PatientIdentifierType patientIdentifierType = Context.getPatientService().getPatientIdentifierTypeByName(identifierType);
+		PatientIdentifier patientIdentifier = patient.getPatientIdentifier(patientIdentifierType);
+		if (patientIdentifier != null) {
+			identifierValue = patientIdentifier.getIdentifier();
+			return identifierValue;
+		}
+		return identifierValue;
 	}
 	
 	public String getVillage(Patient patient) {

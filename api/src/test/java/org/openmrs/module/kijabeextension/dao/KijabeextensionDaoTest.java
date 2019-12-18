@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.kijabeextension.dao;
 
+import org.junit.Ignore;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 
 /**
@@ -17,4 +18,5 @@ import org.openmrs.test.BaseModuleContextSensitiveTest;
  * standardTestDataset.xml in openmrs-api. All test methods are executed in transactions, which are
  * rolled back by the end of each test method.
  */
+@Ignore
 public class KijabeextensionDaoTest extends BaseModuleContextSensitiveTest {}
